@@ -58,24 +58,41 @@ const Students = () => {
       fullName,
       class: studentClass,
       section,
+      dob,
+      address,
+      fatherName,
       rollNumber,
       email,
       phone,
+      parentPhone,
+      gender,
+      motherName,
     } = formData;
+
     if (
       !fullName ||
       !studentClass ||
       !section ||
+      !dob ||
+      !address ||
+      !fatherName ||
       !rollNumber ||
       !email ||
-      !phone
+      !phone ||
+      !parentPhone ||
+      !motherName ||
+      !gender
     ) {
-      alert("Please fill all required fields.");
+      toast.error("Please fill all required fields.");
       return;
     }
 
     const phonePattern = /^[0-9]{10}$/;
     if (!phonePattern.test(phone)) {
+      alert("Please enter a valid phone number.");
+      return;
+    }
+    if (!phonePattern.test(parentPhone)) {
       alert("Please enter a valid phone number.");
       return;
     }
@@ -102,7 +119,6 @@ const Students = () => {
     }
   };
 
-  // Delete Student
   const handleDelete = async (id) => {
     const studentDoc = doc(db, "students", id);
     await deleteDoc(studentDoc);
@@ -110,7 +126,6 @@ const Students = () => {
     fetchStudents();
   };
 
-  // Open Modal for Editing
   const handleEdit = (student) => {
     setFormData(student);
     setIsModalOpen(true);
@@ -134,7 +149,7 @@ const Students = () => {
             className="cursor-pointer text-2xl"
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
           >
-            <FaBars  />
+            <FaBars />
           </h2>
         </div>
 
@@ -207,9 +222,9 @@ const Students = () => {
             </tbody>
           </table>
         </div>
-        </div>
+      </div>
 
-        {isSidebarOpen && (
+      {isSidebarOpen && (
         <div
           className="fixed z-50 inset-0 w-full flex  bg-transparent"
           onClick={() => setIsSidebarOpen(false)}
@@ -220,7 +235,7 @@ const Students = () => {
           >
             <button
               onClick={handleLogout}
-              className="flex items-center text-red-500 text-xl space-x-2 hover:text-red-600" 
+              className="flex items-center text-red-500 text-xl space-x-2 hover:text-red-600"
             >
               <FiLogOut />
               <span>Logout</span>
@@ -229,21 +244,20 @@ const Students = () => {
         </div>
       )}
 
-        <StudentForm
-          isModalOpen={isModalOpen}
-          formData={formData}
-          handleInputChange={handleInputChange}
-          handleSubmit={handleSubmit}
-          setIsModalOpen={setIsModalOpen}
-        />
+      <StudentForm
+        isModalOpen={isModalOpen}
+        formData={formData}
+        handleInputChange={handleInputChange}
+        handleSubmit={handleSubmit}
+        setIsModalOpen={setIsModalOpen}
+      />
 
-        {selectedStudent && (
-          <StudentDetails
-            student={selectedStudent}
-            onClose={() => setSelectedStudent(null)}
-          />
-        )}
-      
+      {selectedStudent && (
+        <StudentDetails
+          student={selectedStudent}
+          onClose={() => setSelectedStudent(null)}
+        />
+      )}
     </>
   );
 };

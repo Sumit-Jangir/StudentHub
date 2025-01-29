@@ -29,25 +29,25 @@ const StudentForm = ({
                   name: "fullName",
                   label: "Full Name",
                   type: "text",
-                  required: true,
+                //   required: true,
                 },
                 {
                   name: "class",
                   label: "Class",
                   type: "text",
-                  required: true,
+                //   required: true,
                 },
                 {
                   name: "section",
                   label: "Section",
                   type: "text",
-                  required: true,
+                //   required: true,
                 },
                 {
                   name: "rollNumber",
                   label: "Roll Number",
                   type: "text",
-                  required: true,
+                //   required: true,
                 },
                 { name: "dob", label: "Date of Birth", type: "date" },
                 { name: "address", label: "Address", type: "text" },
@@ -55,13 +55,13 @@ const StudentForm = ({
                   name: "email",
                   label: "Email",
                   type: "email",
-                  required: true,
+                //   required: true,
                 },
                 {
                   name: "phone",
                   label: "Phone Number",
                   type: "text",
-                  required: true,
+                //   required: true,
                 },
                 { name: "fatherName", label: "Father's Name", type: "text" },
                 { name: "motherName", label: "Mother's Name", type: "text" },
@@ -69,12 +69,14 @@ const StudentForm = ({
                   name: "parentPhone",
                   label: "Parent's Contact Number",
                   type: "text",
+                //   required: true
                 },
                 {
                   name: "gender",
                   label: "Gender",
                   type: "radio",
                   options: ["Male", "Female", "Other"],
+                //   required: true
                 },
               ].map((field) => (
                 <div key={field.name}>
