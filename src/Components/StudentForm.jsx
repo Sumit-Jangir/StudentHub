@@ -1,5 +1,6 @@
 // StudentForm.js
 import React from "react";
+import { FiX } from "react-icons/fi";
 
 const StudentForm = ({
   isModalOpen,
@@ -12,9 +13,15 @@ const StudentForm = ({
     isModalOpen && (
       <div className="absolute top-0 p-6 w-full flex items-center justify-center bg-black/20">
         <div className="bg-white rounded-lg shadow-lg p-6 w-96">
-          <h2 className="text-xl font-bold mb-4">
+          
+          <div className="flex justify-between mb-4">
+            <h2 className="text-xl font-bold ">
             {formData.id ? "Edit Student" : "Add Student"}
           </h2>
+          <button className="text-gray-600 hover:text-gray-900" onClick={()=>setIsModalOpen(false)}>
+                      <FiX size={20} />
+                    </button>
+            </div>
           <form onSubmit={handleSubmit}>
             <div className="space-y-4">
               {[

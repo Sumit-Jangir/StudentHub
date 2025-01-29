@@ -8,10 +8,7 @@ const StudentDetails = ({ student, onClose }) => {
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center p-4">
       <div className="bg-white w-96 p-6 rounded-lg shadow-lg">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-bold">Student Details</h2>
-          <button className="text-gray-600 hover:text-gray-900" onClick={onClose}>
-            <FiX size={20} />
-          </button>
+          <h2 className="text-2xl font-bold">Student Details</h2>
         </div>
 
         <div className="space-y-3">

@@ -16,6 +16,7 @@ import { getAuth, signOut } from "firebase/auth";
 import { FaBars } from "react-icons/fa";
 import StudentDetails from "./StudentDetails";
 import StudentForm from "./StudentForm"; // import the new form component
+import toast from "react-hot-toast";
 
 const Students = () => {
   const [students, setStudents] = useState([]);
@@ -105,6 +106,7 @@ const Students = () => {
   const handleDelete = async (id) => {
     const studentDoc = doc(db, "students", id);
     await deleteDoc(studentDoc);
+    toast.success("Student deleted successfully!");
     fetchStudents();
   };
 

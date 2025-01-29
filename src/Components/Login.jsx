@@ -3,6 +3,7 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 // import { auth } from '../firebase/firebaseConfig';
 import {app} from '../firebase'
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -15,12 +16,11 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      // Log in with email and password
       await signInWithEmailAndPassword(auth, email, password);
-      // Redirect to students page after successful login
+      toast.success('Login Successfully!');
       navigate('/students');
     } catch (err) {
-      setError('Invalid credentials. Please try again.');
+      toast.error('Invalid credentials. Please try again.');
     }
   };
 
